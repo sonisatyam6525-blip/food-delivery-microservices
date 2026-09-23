@@ -42,3 +42,27 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+
+# Spring Boot / Maven
+**/target/
+**/.mvn/timing.properties
+
+# Eclipse / Spring Tool Suite
+**/.classpath
+**/.project
+**/.settings/
+**/.springBeans
+**/.sts4-cache/
+
+# Java compiled files
+*.class
+
+# Logs
+*.log
+
+# Environment / secrets
+.env
+.env.*
+
+**/bin/

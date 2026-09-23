@@ -1,0 +1,120 @@
+<!-- <main class="main-content my-gap" > -->
+    <!-- <div class="restaurant-grid">
+        <div class="restaurant-card" *ngFor="let restaurant of restaurantList">
+            <h1>NGFOR IS WORKING</h1>
+
+    <p>Restaurant ID: {{ restaurant.id }}</p>
+    <p>Restaurant Name: {{ restaurant.name }}</p>
+
+
+        <div class="restaurant-image"> -->
+            <!-- <img [src]="'/restaurant pics/' + getRandomImage()" alt="Restaurant 1"> --> 
+            <!-- <img src="/restaurant%20pics/1.jpg" alt="Restaurant 1"> -->
+            <!-- <img src="/restaurant%20pics/1.jpg" width="200"> -->
+        <!-- </div>
+        <div class="restaurant-details">
+            <h3 class="restaurant-name">{{restaurant.name}}</h3>
+            <div class="restaurant-rating">
+            <span class="rating"><i class="fa fa-star"></i>4.5</span>
+            <span class="rating-count">(500+)</span>
+            </div>
+            <button class="order-btn" (click)="onButtonClick(restaurant.id)">Order Now</button> -->
+        <!-- </div> -->
+        <!-- </div> -->
+    <!-- </div>  -->
+    <!-- </main> -->
+
+    
+<!-- 
+<main class="main-content my-gap">
+
+<div class="restaurant-grid">
+
+    <div class="restaurant-card" *ngFor="let restaurant of restaurantList">
+
+    <div class="restaurant-image">
+        <img
+        [src]="'/restaurant%20pics/' + getRandomImage()"
+        alt="Restaurant 1">
+</div>
+
+    <div class="restaurant-details">
+
+        <h3 class="restaurant-name">
+        {{ restaurant.name }}
+        </h3>
+
+        <div class="restaurant-rating">
+        <span class="rating">
+            <i class="fa fa-star"></i>4.5
+        </span>
+
+        <span class="rating-count">
+            (500+)
+        </span>
+        </div>
+
+        <button
+        class="order-btn"
+        (click)="onButtonClick(restaurant.id)">
+        Order Now
+        </button>
+
+    </div>
+
+    </div>
+
+</div>
+
+</main> -->
+
+<main class="main-content my-gap">
+
+  <div class="restaurant-grid">
+
+    <div
+      class="restaurant-card"
+      *ngFor="let restaurant of restaurantList">
+
+      <div class="restaurant-image">
+
+        <img
+          [src]="'/restaurant%20pics/' + getRandomImage()"
+          alt="Restaurant">
+
+      </div>
+
+      <div class="restaurant-details">
+
+        <h3 class="restaurant-name">
+          {{ restaurant.name }}
+        </h3>
+
+        <div class="restaurant-rating">
+
+          <span class="rating">
+            <i class="fa fa-star"></i>
+            4.5
+          </span>
+
+          <span class="rating-count">
+            (500+)
+          </span>
+
+        </div>
+
+        <button
+          class="order-btn"
+          (click)="onButtonClick(restaurant.id)">
+
+          Order Now
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
