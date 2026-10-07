@@ -5,4 +5,5 @@ export interface Restaurant{
     address?: string;
     city?: string;
     resturantDescription?: string;
+    
 }
