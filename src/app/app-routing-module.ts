@@ -7,7 +7,14 @@ const routes: Routes = [{path: '', redirectTo:"resturant-listing",pathMatch:'ful
     loadChildren: () =>
       import('./food-catalogue/food-catalogue-module')
         .then(m => m.FoodCatalogueModule)
-  }
+  },
+
+  {
+  path: 'orderSummary',
+  loadChildren: () =>
+    import('./order-summary/order-summary-module')
+      .then(m => m.OrderSummaryModule)
+}
 
 
 ];

@@ -1,6 +1,7 @@
 package com.codedecode.foodcatalouge.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codedecode.foodcatalouge.dto.FoodCatalougePage;
 import com.codedecode.foodcatalouge.dto.FoodItemDTO;
 import com.codedecode.foodcatalouge.service.FoodCatalogueService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping("/foodCatalouge")
+@CrossOrigin(origins = "http://localhost:4200")
 public class FoodCatalougeController {
 
     @Autowired

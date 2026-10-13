@@ -1,6 +1,7 @@
 package com.codedecode.order.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import com.codedecode.order.dto.OrderDTO;
 import com.codedecode.order.entity.Order;
@@ -9,8 +10,10 @@ import com.codedecode.order.entity.Order;
 
 public interface OrderMapper {
 
+	 @Mapping(target = "foodItemsList", source = "foodItemList")
 	Order mapOrderDTOToOrder(OrderDTO orderDTO);
 
+	 @Mapping(target = "foodItemList", source = "foodItemsList")
 	OrderDTO mapOrderToOrderDTO(Order order);
 	}
 

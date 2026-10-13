@@ -13,7 +13,7 @@ public class OrderDTO {
 
     private Integer orderId;
 
-    private List<FoodItemDTO> foodItemsList;
+    private List<FoodItemDTO> foodItemList;
 
     private Resturant resturant;
 

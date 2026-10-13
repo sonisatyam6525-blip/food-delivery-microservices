@@ -34,6 +34,7 @@ import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { HeaderModule } from './header/header-module';
 import { RestaurantListingModule } from './restaurant-listing/restaurant-listing-module';
+import { OrderSummaryModule} from './order-summary/order-summary-module';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { RestaurantListingModule } from './restaurant-listing/restaurant-listing
     BrowserModule,
     AppRoutingModule,
     HeaderModule,
-    RestaurantListingModule
+    RestaurantListingModule,
+    OrderSummaryModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

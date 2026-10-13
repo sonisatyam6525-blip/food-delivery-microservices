@@ -9,6 +9,7 @@ import { FoodCataloguePage } from '../../Shared/models/FoodCatalouguePage';
 import { FoodItemService } from '../service/fooditem.service';
 import { RestaurantService } from '../../restaurant-listing/service/restaurant.service';
 import { Restaurant } from '../../Shared/models/Restaurant';
+import { OrderDTO } from '../../order-summary/model/OrderDTO';
 
 @Component({
   selector: 'app-food-catalogue',
@@ -24,7 +25,7 @@ export class FoodCatalogue implements OnInit {
 
   foodItemCart: FoodItem[] = [];
 
-  orderSummary!: FoodCataloguePage;
+  orderSummary!: OrderDTO;
 
   constructor(
     private route: ActivatedRoute,
@@ -186,25 +187,25 @@ export class FoodCatalogue implements OnInit {
 
   }
 
-  increment(food: FoodItem): void {
 
-    food.quantity = (food.quantity ?? 0) + 1;
+increment(food: FoodItem): void {
+  console.log('🔥 INCREMENT CLICKED:', food.item);
 
-    const index = this.foodItemCart.findIndex(
-      item => item.id === food.id
-    );
+  food.quantity = (food.quantity ?? 0) + 1;
 
-    if (index === -1) {
+  const index = this.foodItemCart.findIndex(
+    item => item.id === food.id
+  );
 
-      this.foodItemCart.push(food);
-
-    } else {
-
-      this.foodItemCart[index] = food;
-
-    }
-
+  if (index === -1) {
+    this.foodItemCart.push(food);
+  } else {
+    this.foodItemCart[index] = food;
   }
+
+  console.log('🛒 CART AFTER ADD:', [...this.foodItemCart]);
+}
+
 
   decrement(food: FoodItem): void {
 
@@ -234,40 +235,85 @@ export class FoodCatalogue implements OnInit {
 
   }
 
-  onCheckOut(): void {
+// onCheckOut(): void {
+//   if (!this.foodItemResponse) {
+//     console.error('❌ Cannot checkout. Food catalogue response is not available.');
+//     return;
+//   }
 
-    if (!this.foodItemResponse) {
+// // tmp
 
-      console.error(
-        '❌ Cannot checkout. Food catalogue response is not available.'
-      );
+// console.log('🔥 CART BEFORE CHECKOUT:', this.foodItemCart);
 
-      return;
+// this.foodItemCart.forEach(item => {
+//   console.log(
+//     '🍔 ITEM:',
+//     item.item,
+//     'QUANTITY:',
+//     item.quantity,
+//     'PRICE:',
+//     item.price
+//   );
+// });
 
-    }
 
-    this.orderSummary = {
 
-      foodItemList: this.foodItemCart,
 
-      restaurant: this.foodItemResponse.restaurant
 
-    };
+// // tmp
 
-    console.log(
-      '🔥 ORDER SUMMARY:',
-      this.orderSummary
-    );
 
-    this.router.navigate(
-      ['/orderSummary'],
-      {
-        queryParams: {
-          data: JSON.stringify(this.orderSummary)
-        }
-      }
-    );
 
+//   this.orderSummary = {
+//     foodItemList: this.foodItemCart,
+//     restaurant: this.foodItemResponse.restaurant
+//   };
+
+//   console.log('🔥 ORDER SUMMARY:', this.orderSummary);
+
+//   this.router.navigate(
+//     ['/orderSummary'],
+//     {
+//       queryParams: {
+//         data: JSON.stringify(this.orderSummary)
+//       }
+//     }
+//   );
+// }
+
+
+
+
+onCheckOut(): void {
+  if (!this.foodItemResponse) {
+    console.error('Cannot checkout: food catalogue is unavailable.');
+    return;
   }
+
+  console.log('CART BEFORE CHECKOUT:', this.foodItemCart);
+
+  if (this.foodItemCart.length === 0) {
+    console.warn('Please select at least one food item.');
+    return;
+  }
+
+  this.orderSummary = {
+    foodItemList: this.foodItemCart,
+    restaurant: this.foodItemResponse.restaurant
+  };
+
+  console.log('ORDER SUMMARY:', this.orderSummary);
+
+  this.router.navigate(['/orderSummary'], {
+    queryParams: {
+      data: JSON.stringify(this.orderSummary)
+    }
+  }).then(navigated => {
+    console.log('ORDER SUMMARY NAVIGATION:', navigated);
+  }).catch(error => {
+    console.error('ORDER SUMMARY NAVIGATION ERROR:', error);
+  });
+}
+
 
 }
